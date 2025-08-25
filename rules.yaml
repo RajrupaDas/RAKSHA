@@ -1,0 +1,98 @@
+rules:
+  - id: ZTA-0001
+    description: "Zero-Trust not enabled; segment exposure risk"
+    segments: ["GROUND", "SPACE", "LINK"]
+    requireControls: ["ZTA"]
+    when:
+      - all:
+          - segmentPresent: "GROUND"
+    riskDelta: 5
+    then:
+      severity: "HIGH"
+      message: "Enable Zero-Trust segmentation across ground and space links to reduce lateral movement risk."
+      recommendControls: ["ZTA", "NetworkSegmentation", "MFA"]
+      actions: ["PlanZTAIncrement", "GateNewDeploymentsOnPolicy"]
+
+  - id: DDOS-1001
+    description: "Possible DDoS in ground segment"
+    segments: ["GROUND"]
+    when:
+      - all:
+          - metricGreaterThan: "packetDropPct"
+            value: 20
+          - metricGreaterThan: "cmdRate"
+            value: 150
+      - any:
+          - eventPresent: "burstTraffic"
+          - eventPresent: "upstreamCongestion"
+    riskDelta: 8
+    then:
+      severity: "CRITICAL"
+      message: "Indicators of DDoS against ground station control plane."
+      recommendControls: ["RateLimiting", "UpstreamScrubbing", "Anycast", "WAF"]
+      actions: ["EnableDDoSProfile", "ThrottleNonCritical", "FailoverLink"]
+
+  - id: AUTH-2001
+    description: "Excessive auth failures without MFA"
+    segments: ["GROUND", "SPACE"]
+    when:
+      - all:
+          - metricGreaterThan: "authFailures"
+            value: 10
+          - any:
+              - controlMissing: "MFA"
+              - configEqualsKey: "cmdAuth"
+                configEqualsValue: "PASSWORDS_ONLY"
+    riskDelta: 6
+    then:
+      severity: "HIGH"
+      message: "High authentication failures and missing MFA – enforce MFA and RBAC immediately."
+      recommendControls: ["MFA", "RBAC", "AccountLockout"]
+      actions: ["EnforceMFA", "LockSuspiciousAccounts", "IncreaseLogging"]
+
+  - id: INSIDER-3001
+    description: "Potential insider misuse of privileged commands"
+    segments: ["GROUND", "SPACE"]
+    when:
+      - all:
+          - metricGreaterThan: "cmdRate"
+            value: 120
+          - eventPresent: "offHoursActivity"
+          - controlMissing: "JustInTimeAccess"
+    riskDelta: 7
+    then:
+      severity: "HIGH"
+      message: "Spike in command rate off-hours with missing JIT access. Investigate insider misuse."
+      recommendControls: ["JustInTimeAccess", "SessionRecording", "BehaviorAnalytics"]
+      actions: ["SuspendPrivilegedSessions", "OpenIR", "RotateCredentials"]
+
+  - id: SUPPLY-4001
+    description: "Firmware update without SBOM or signed images"
+    segments: ["SPACE"]
+    when:
+      - all:
+          - eventPresent: "firmwareUpdatePending"
+          - any:
+              - controlMissing: "SignedFirmware"
+              - controlMissing: "SBOM"
+    riskDelta: 5
+    then:
+      severity: "MEDIUM"
+      message: "Block firmware update until signed artifacts and SBOM validations are in place."
+      recommendControls: ["SignedFirmware", "SBOM", "BinaryTransparency"]
+      actions: ["QuarantineUpdate", "VerifySignature", "CheckSBOMPolicy"]
+
+  - id: RECOVER-5001
+    description: "No backup link available for critical mission path"
+    segments: ["LINK"]
+    when:
+      - all:
+          - segmentPresent: "LINK"
+          - controlMissing: "RedundantLink"
+    riskDelta: 4
+    then:
+      severity: "MEDIUM"
+      message: "Establish redundant link and practice failover to improve recover/adapt posture."
+      recommendControls: ["RedundantLink", "ChaosTesting"]
+      actions: ["DesignBackupLink", "RunFailoverExercise"]
+

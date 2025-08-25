@@ -1,0 +1,10 @@
+{
+  "missionName": "Horizon-3",
+  "segments": ["GROUND", "SPACE"],
+  "controls": ["RBAC"],
+  "metrics": { "authFailures": 22, "cmdRate": 70, "linkErrors": 3, "cpuLoad": 0.3, "packetDropPct": 0.5 },
+  "backups": { "GROUND": false, "LINK": true },
+  "recentEvents": ["loginBruteForce"],
+  "config": { "cmdAuth": "PASSWORDS_ONLY", "crypto": "AES256" }
+}
+

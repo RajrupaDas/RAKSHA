@@ -1,0 +1,10 @@
+{
+  "missionName": "Relay-9",
+  "segments": ["LINK"],
+  "controls": [],
+  "metrics": { "authFailures": 0, "cmdRate": 15, "linkErrors": 1, "cpuLoad": 0.2, "packetDropPct": 0.1 },
+  "backups": { "LINK": false },
+  "recentEvents": [],
+  "config": { "cmdAuth": "RBAC", "crypto": "AES256" }
+}
+

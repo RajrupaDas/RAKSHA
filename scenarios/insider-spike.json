@@ -1,0 +1,10 @@
+{
+  "missionName": "Sentinel-X",
+  "segments": ["GROUND", "SPACE"],
+  "controls": ["RBAC", "MFA"],
+  "metrics": { "authFailures": 1, "cmdRate": 145, "linkErrors": 2, "cpuLoad": 0.5, "packetDropPct": 1.0 },
+  "backups": { "GROUND": true, "LINK": false },
+  "recentEvents": ["offHoursActivity"],
+  "config": { "cmdAuth": "RBAC", "crypto": "AES256" }
+}
+
