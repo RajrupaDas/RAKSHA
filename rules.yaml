@@ -39,10 +39,10 @@ rules:
       - all:
           - metricGreaterThan: "authFailures"
             value: 10
-          - any:
-              - controlMissing: "MFA"
-              - configEqualsKey: "cmdAuth"
-                configEqualsValue: "PASSWORDS_ONLY"
+      - any:
+          - controlMissing: "MFA"
+          - configEqualsKey: "cmdAuth"
+            configEqualsValue: "PASSWORDS_ONLY"
     riskDelta: 6
     then:
       severity: "HIGH"
@@ -72,9 +72,9 @@ rules:
     when:
       - all:
           - eventPresent: "firmwareUpdatePending"
-          - any:
-              - controlMissing: "SignedFirmware"
-              - controlMissing: "SBOM"
+      - any:
+          - controlMissing: "SignedFirmware"
+          - controlMissing: "SBOM"
     riskDelta: 5
     then:
       severity: "MEDIUM"
