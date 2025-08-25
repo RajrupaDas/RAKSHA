@@ -1,13 +1,29 @@
 import java.util.List;
 
 public class Recommendation {
-    public Severity severity;
-    public String message;
-    public List<String> controls;
-    public List<String> actions;
-    public int riskDelta;
+    private String severity;
+    private String message;
+    private List<String> recommendControls;
+    private List<String> actions;
+    private int riskDelta;
 
-    public int riskDelta() { return riskDelta; }
+    public Recommendation() {}
+
+    public Recommendation(String severity, String message,
+                          List<String> recommendControls,
+                          List<String> actions,
+                          int riskDelta) {
+        this.severity = severity;
+        this.message = message;
+        this.recommendControls = recommendControls;
+        this.actions = actions;
+        this.riskDelta = riskDelta;
+    }
+
+    public String getSeverity() { return severity; }
+    public String getMessage() { return message; }
+    public List<String> getRecommendControls() { return recommendControls; }
+    public List<String> getActions() { return actions; }
+    public int getRiskDelta() { return riskDelta; }
 }
-
 
