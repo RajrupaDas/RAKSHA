@@ -1,10 +1,12 @@
 {
   "missionName": "Aurora-1",
   "segments": ["GROUND", "LINK"],
-  "controls": ["RBAC"],
-  "metrics": { "authFailures": 3, "cmdRate": 180, "linkErrors": 60, "cpuLoad": 0.8, "packetDropPct": 35.0 },
-  "backups": { "GROUND": true, "LINK": true },
-  "recentEvents": ["burstTraffic"],
+  "controls": ["RBAC"], 
+  "metrics": { "authFailures": 20, "cmdRate": 600, "linkErrors": 200, "cpuLoad": 0.95, "packetDropPct": 80.0 },
+  "backups": { "GROUND": false, "LINK": true },
+  "recentEvents": ["DDoS", "burstTraffic"],
   "config": { "cmdAuth": "RBAC", "crypto": "AES256" }
 }
+
+
 

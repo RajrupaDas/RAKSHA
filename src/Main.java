@@ -53,9 +53,13 @@ public class Main {
 
         System.out.println("Scenario: " + scenarioFile.getName());
         for (Recommendation r : recs) {
-            System.out.println("- [" + r.severity() + "] " + r.message());
-            System.out.println("  Controls: " + String.join(", ", r.recommendControls()));
-            System.out.println("  Actions: " + String.join(", ", r.actions()));
+          System.out.println("- [" + r.getSeverity() + "] " + r.getMessage());
+          System.out.println("  Controls: " + (r.getRecommendControls()==null || r.getRecommendControls().isEmpty()
+            ? "-"
+            : String.join(", ", r.getRecommendControls())));
+          System.out.println("  Actions: " + (r.getActions()==null || r.getActions().isEmpty()
+            ? "-"
+            : String.join(", ", r.getActions())));
         }
 
         int score = engine.calculateResilienceScore(recs);

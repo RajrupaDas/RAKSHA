@@ -1,8 +1,11 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RuleEngine {
+
     public List<Recommendation> evaluate(RuleSet set, SystemContext ctx) {
         List<Recommendation> out = new ArrayList<>();
+        if (set == null || set.rules == null) return out;
         for (Rule r : set.rules) {
             if (r.matches(ctx)) {
                 out.add(toRecommendation(r));
@@ -13,32 +16,30 @@ public class RuleEngine {
 
     private Recommendation toRecommendation(Rule r) {
         return new Recommendation(
-                r.then.severity,
-                r.then.message,
-                r.then.recommendControls,
-                r.then.actions,
+                r.then != null ? r.then.severity : "LOW",
+                r.then != null ? r.then.message : r.description,
+                r.then != null ? r.then.recommendControls : List.of(),
+                r.then != null ? r.then.actions : List.of(),
                 r.riskDelta
         );
     }
 
-    // --- NEW: severity-weighted resilience score ---
+    // Severity-weighted resilience score (0–100, higher is better)
     public int calculateResilienceScore(List<Recommendation> recs) {
-        if (recs.isEmpty()) return 100; // Perfect resilience if no findings
-
+        if (recs == null || recs.isEmpty()) return 100;
         int totalPenalty = 0;
         for (Recommendation r : recs) {
-            int weight = switch (r.severity()) {
-                case "CRITICAL" -> 5;
-                case "HIGH" -> 3;
-                case "MEDIUM" -> 2;
-                default -> 1;
-            };
-            totalPenalty += r.riskDelta() * weight;
+            int weight;
+            String sev = r.getSeverity() == null ? "LOW" : r.getSeverity();
+            switch (sev) {
+                case "CRITICAL": weight = 5; break;
+                case "HIGH":     weight = 3; break;
+                case "MEDIUM":   weight = 2; break;
+                default:         weight = 1; break;
+            }
+            totalPenalty += r.getRiskDelta() * weight;
         }
-
-        // Normalize into 0–100 (simple heuristic)
-        int score = 100 - Math.min(totalPenalty, 100);
-        return score;
+        return 100 - Math.min(totalPenalty, 100);
     }
 }
 
