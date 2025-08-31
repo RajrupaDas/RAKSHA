@@ -1,0 +1,8 @@
+[
+    {
+        "component": "CPU",
+        "riskIncrease": 2,
+        "condition": "load>80"
+    }
+]
+

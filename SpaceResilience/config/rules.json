@@ -1,0 +1,9 @@
+[
+    {
+        "rule": "if protocol == 'TCP' and payload contains 'malware' then ALERT"
+    },
+    {
+        "rule": "if protocol == 'UDP' and payload contains 'suspicious' then ALERT"
+    }
+]
+
