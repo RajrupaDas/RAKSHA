@@ -1,0 +1,8 @@
+CREATE TABLE packets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    srcIp TEXT,
+    dstIp TEXT,
+    protocol TEXT,
+    length INTEGER
+);
+
