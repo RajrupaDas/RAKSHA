@@ -1,7 +1,7 @@
 # RAKSHA: Resilience And Knowledge-driven System for Holistic Health Assurance
 
 ## Overview
-**RAKSHA** (रक्षा – "Protection") is a prototype system designed to model and evaluate **resilience in space-ground systems** using a modular, Java-based architecture.  
+**RAKSHA** is a prototype system designed to model and evaluate **resilience in space-ground systems** using a modular, Java-based architecture.  
 It integrates **risk assessment**, **system health monitoring**, and a structured **Model-Based Systems Engineering (MBSE)** workflow to provide a foundation for dependable satellite and mission control applications.
 
 This repository is part of an ongoing research project focused on:
