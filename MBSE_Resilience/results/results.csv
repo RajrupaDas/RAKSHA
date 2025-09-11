@@ -1,0 +1,16 @@
+Scenario,Risk,Recovery,Outcome
+scenarioC.json,Radiation Spike,Switch to Backup Systems,Recovered
+scenarioA.json,Radiation Spike,Switch to Backup Systems,Recovered
+scenarioB.json,Radiation Spike,Switch to Backup Systems,Recovered
+scenarioE.json,Radiation Spike,Switch to Backup Systems,Recovered
+scenarioD.json,Radiation Spike,Switch to Backup Systems,Recovered
+Timestamp,Scenario,CPU,Memory,Network,Risk,Recovery
+2025-09-11T10:57:55.675050986,scenarioC.json,57,61,32,50,false
+2025-09-11T10:57:56.679667898,scenarioA.json,62,15,92,56,false
+2025-09-11T10:57:57.680916151,scenarioB.json,56,79,52,62,false
+2025-09-11T10:57:58.682126997,scenarioE.json,88,63,43,64,false
+2025-09-11T10:57:59.683205046,scenarioD.json,64,5,85,51,false
+2025-09-11T10:58:00.684367114,scenarioC.json,98,93,15,68,false
+2025-09-11T10:58:01.685607108,scenarioA.json,18,72,51,47,false
+2025-09-11T10:58:02.686903961,scenarioB.json,44,3,87,44,false
+2025-09-11T10:58:03.688079749,scenarioE.json,45,61,56,54,false

@@ -1,0 +1,15 @@
+  {
+  "name": "Radiation Spike",
+  "risk": {
+    "type": "Environment",
+    "severity": "High",
+    "likelihood": 0.9,
+    "impact": "System crash"
+  },
+  "recovery": {
+    "strategy": "Shielding Protocol",
+    "mttd": 4,
+    "mttr": 25
+  }
+}
+

@@ -1,0 +1,15 @@
+{
+  "name": "Packet Loss",
+  "risk": {
+    "type": "Network",
+    "severity": "High",
+    "likelihood": 0.7,
+    "impact": "Communication failure"
+  },
+  "recovery": {
+    "strategy": "Switch Routing",
+    "mttd": 3,
+    "mttr": 12
+  }
+}
+

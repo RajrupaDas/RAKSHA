@@ -15,10 +15,10 @@
     <dependencies>
         <!-- SQLite -->
         <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.42.0.0</version>
-        </dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+         </dependency>
 
         <!-- Pcap4J for packet capture -->
         <dependency>

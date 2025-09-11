@@ -1,0 +1,16 @@
+{
+  "name": "Sensor Failure",
+  "risk": {
+    "type": "Hardware",
+    "severity": "Low",
+    "likelihood": 0.4,
+    "impact": "Partial data loss"
+  },
+  "recovery": {
+    "strategy": "Activate Redundant Sensor",
+    "mttd": 6,
+    "mttr": 20
+  }
+}
+
+

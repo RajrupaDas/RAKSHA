@@ -1,0 +1,15 @@
+{
+  "name": "CPU Overload",
+  "risk": {
+    "type": "CPU",
+    "severity": "High",
+    "likelihood": 0.8,
+    "impact": "System slowdown"
+  },
+  "recovery": {
+    "strategy": "Restart Module",
+    "mttd": 5,
+    "mttr": 10
+  }
+}
+

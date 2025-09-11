@@ -1,7 +1,14 @@
-com/spaceresilience/mbse/HealthModule.class
-com/spaceresilience/Main.class
+com/spaceresilience/ResultsLogger.class
 com/spaceresilience/mbse/Module.class
 com/spaceresilience/mbse/RiskModule.class
+com/spaceresilience/models/Scenario$Risk.class
+com/spaceresilience/models/Scenario.class
+com/spaceresilience/HealthMonitor.class
+com/spaceresilience/mbse/HealthModule.class
+com/spaceresilience/Main.class
+com/spaceresilience/RiskModule.class
+com/spaceresilience/RecoveryEngine.class
+com/spaceresilience/models/Scenario$Recovery.class
 com/spaceresilience/capture/PacketCapture.class
 com/spaceresilience/detection/RuleEngine.class
 com/spaceresilience/capture/PacketCapture$1.class

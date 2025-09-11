@@ -1,0 +1,16 @@
+  {
+  "name": "Memory Leak",
+  "risk": {
+    "type": "Memory",
+    "severity": "Medium",
+    "likelihood": 0.6,
+    "impact": "Service degradation"
+  },
+  "recovery": {
+    "strategy": "Garbage Collection",
+    "mttd": 8,
+    "mttr": 15
+  }
+}
+
+
